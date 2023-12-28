@@ -2,11 +2,10 @@
 
 import { db } from '@/firebase';
 import { ChatBubbleLeftIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { collection, deleteDoc, doc, orderBy, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
@@ -30,7 +29,7 @@ function ChatRow({ id }: Props) {
     setActive(pathName.includes(id));
   }, [pathName]);
 
-  //TODO: return to home page only if the selected chat was deleted
+  // TODO: return to home page only if the selected chat was deleted
   const removeChat = async () => {
     await deleteDoc(doc(db, 'users', session?.user?.email!, 'chats', id));
     router.replace('/');

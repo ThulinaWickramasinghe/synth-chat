@@ -23,7 +23,7 @@ function NewChat() {
   };
 
   return (
-    //TODO: use a button component instead of div for clicking
+    // TODO: use a button component instead of div for clicking
     <div
       onClick={createNewChat}
       onKeyDown={(e) => e.key === 'Enter' && createNewChat()} // Handle Enter key press
