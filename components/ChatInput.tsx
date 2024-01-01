@@ -16,7 +16,7 @@ function ChatInput({ chatId }: Props) {
   const { data: session } = useSession();
 
   // TODO: useSWR to get model
-  const model = 'text-davinci-003';
+  const model = 'gpt-3.5-turbo';
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ function ChatInput({ chatId }: Props) {
     // Toast notification : loading
     const notification = toast.loading('ChatGPT is thinking ...');
 
-    await fetch('/api/prompt', {
+    await fetch('/api/prompts/prompt', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
