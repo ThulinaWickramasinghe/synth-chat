@@ -8,7 +8,9 @@ type Props = {
 function Message({ message }: Props) {
   const isAI = message.user.name === 'ChatGPT';
   return (
-    <div className={`py-5 text-white ${isAI && 'bg-[#434654]'}`}>
+    <div
+      className={`py-5 text-white ${isAI && 'bg-[#434654]'} mx-2 rounded-lg`}
+    >
       <div className='mx-auto flex max-w-2xl space-x-5 px-10'>
         <Image
           src={message.user.avatar}
