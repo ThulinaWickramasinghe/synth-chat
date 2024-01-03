@@ -31,12 +31,12 @@ function Chat({ chatId }: Props) {
   return (
     <div className='flex-1 overflow-y-auto overflow-x-hidden'>
       {messages?.empty && (
-        <>
+        <div className='self-center'>
           <p className='mt-10 text-center text-white'>
             Type in a prompt below to get started!
           </p>
           <ArrowDownCircleIcon className='mx-auto mt-5 h-10 w-10 animate-bounce text-white' />
-        </>
+        </div>
       )}
       {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />

@@ -6,7 +6,6 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
-import ModelSelection from './ModelSelection';
 import useSWR from 'swr';
 
 type Props = {
@@ -53,7 +52,9 @@ function ChatInput({ chatId }: Props) {
     );
 
     // Toast notification : loading
-    const notification = toast.loading('ChatGPT is thinking ...');
+    const notification = toast.loading('ChatGPT is thinking ...', {
+      position: 'bottom-left',
+    });
 
     await fetch('/api/prompts/prompt', {
       method: 'POST',
@@ -70,6 +71,7 @@ function ChatInput({ chatId }: Props) {
       // Toast notification : successfull
       toast.success('ChatGPT has responded!', {
         id: notification,
+        position: 'bottom-left',
       });
     });
   };
@@ -94,10 +96,6 @@ function ChatInput({ chatId }: Props) {
           <PaperAirplaneIcon className='h-4 w-4 -rotate-45' />
         </button>
       </form>
-
-      <div className='md:hidden'>
-        <ModelSelection />
-      </div>
     </div>
   );
 }
